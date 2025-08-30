@@ -45,12 +45,12 @@ final class AlgorithmTesting {
         }
         ArrayList<Pixel> optimalPlacements = calculator.getOptimalPlacements(backdrop);
         backdrop.print();
-        printLine();
+        System.out.println();
         for (Pixel pixel : optimalPlacements) pixel.print();
-        printLine();
+        System.out.println();
 
         boolean solve = false;
-        while (backdrop.notFull()) {
+        while (!backdrop.isFull()) {
             if (!solve) {
                 int x = input.nextInt();
                 int y = input.nextInt();
@@ -65,24 +65,21 @@ final class AlgorithmTesting {
             }
             optimalPlacements = calculator.getOptimalPlacements(backdrop);
             if (!solve || printPerIteration) {
-                printLine();
-                printLine();
+                System.out.println();
+                System.out.println();
                 backdrop.print();
-                printLine();
+                System.out.println();
                 for (Pixel pixel : optimalPlacements) pixel.print();
             }
         }
         if (solve && !printPerIteration) {
-            printLine();
-            printLine();
+            System.out.println();
+            System.out.println();
             backdrop.print();
-            printLine();
+            System.out.println();
             for (Pixel pixel : optimalPlacements) pixel.print();
         }
         System.out.println(backdrop.mosaicCount + " mosaics");
     }
 
-    private static void printLine() {
-        System.out.println();
-    }
 }
