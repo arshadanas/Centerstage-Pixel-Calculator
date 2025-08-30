@@ -160,9 +160,9 @@ public final class Pixel implements Comparable<Pixel> {
          */
         public String toString() {
             return switch (this) {
-                case PURPLE -> (printInColor ? "" : "\u001B[35m") + "P" + RESET;
-                case YELLOW -> (printInColor ? "" : "\u001B[33m") + "Y" + RESET;
-                case GREEN -> (printInColor ? "" : "\u001B[32m") + "G" + RESET;
+                case PURPLE -> (printInColor ? "\u001B[35m" : "") + "P" + RESET;
+                case YELLOW -> (printInColor ? "\u001B[33m" : "") + "Y" + RESET;
+                case GREEN -> (printInColor ? "\u001B[32m" : "") + "G" + RESET;
                 case WHITE, ANY -> "" + name().charAt(0);
                 case ANYCOLOR -> "C";
                 case INVALID -> " ";
