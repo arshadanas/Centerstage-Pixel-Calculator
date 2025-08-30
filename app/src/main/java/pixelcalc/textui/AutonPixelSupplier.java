@@ -36,7 +36,7 @@ public final class AutonPixelSupplier {
         }
 
         ArrayList<Pixel> optimalPlacements = calculator.getOptimalPlacements(backdrop);
-        while (backdrop.notFull()) {
+        while (!backdrop.isFull()) {
             Pixel optimalPlacement = null;
             for (Pixel placement : optimalPlacements) {
                 if (placement.color != Pixel.Color.WHITE) continue;

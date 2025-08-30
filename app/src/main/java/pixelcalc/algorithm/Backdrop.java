@@ -207,11 +207,11 @@ public final class Backdrop {
     /**
      * @return Whether this {@link Backdrop} has any empty slots
      */
-    public boolean notFull() {
+    public boolean isFull() {
         for (Pixel pixel : slots[10])
             if (pixel.color == EMPTY)
-                return true;
-        return false;
+                return false;
+        return true;
     }
 
     /**
