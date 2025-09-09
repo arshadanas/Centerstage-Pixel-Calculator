@@ -234,6 +234,11 @@ public final class PlacementCalculator {
         removeOverridingPixels(optimalPlacements);
     }
 
+    /**
+    * Re-counts the colorsLeft and sets the recommended color for Pixels p2 and p3. 
+    * If there is at least one of each of the colors p1 is not, p2's and p3's recommendeds will be those colors. 
+    * Otherwise, if there are at least 2 of the same color as p1, p2's and p3's recommended will be p1's color
+    */
     private void countExpendedPixels(Pixel p1, Pixel p2, Pixel p3) {
         int c1 = p1.color.ordinal();
         int c2 = (c1 + 1) % 3;
@@ -250,6 +255,9 @@ public final class PlacementCalculator {
         }
     }
 
+    /**
+    * Returns the third color to complete (or progress) a mosaic
+    */
     private Pixel.Color getRemainingColor(Pixel.Color c1, Pixel.Color c2) {
         if (c1 == EMPTY || c2 == EMPTY)
             return ANYCOLOR;
@@ -262,6 +270,10 @@ public final class PlacementCalculator {
         return colors.getFirst();
     }
 
+    /**
+    * When one pixel remains to complete a mosaic. 
+    * Builds the third pixel with associated attributes and adds it to optimalPlacements and colorsToGetSPixels
+    */
     private void oneRemainingCase(Pixel p1, Pixel fillLoc, Pixel p2) {
         Pixel.Color remainingColor = getRemainingColor(p1.color, p2.color);
         Pixel p3 = new Pixel(fillLoc, remainingColor);
@@ -275,6 +287,9 @@ public final class PlacementCalculator {
         colorsLeft[index] = max(0, colorsLeft[index] - 1);
     }
 
+    /**
+    * Returns whether a given Pixel is adjacent to a colored Pixel on the Backdrop
+    */
     private boolean touchingAdjacentColor(Pixel pixel) {
         for (Pixel neighbor : backdrop.getNeighbors(pixel))
             if (neighbor.color.isColored()) {
