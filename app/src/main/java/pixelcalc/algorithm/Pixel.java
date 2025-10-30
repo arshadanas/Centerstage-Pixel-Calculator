@@ -163,7 +163,8 @@ public final class Pixel implements Comparable<Pixel> {
                 case PURPLE -> (printInColor ? "\u001B[35m" : "") + "P" + RESET;
                 case YELLOW -> (printInColor ? "\u001B[33m" : "") + "Y" + RESET;
                 case GREEN -> (printInColor ? "\u001B[32m" : "") + "G" + RESET;
-                case WHITE, ANY -> "" + name().charAt(0);
+                case WHITE -> "W";
+                case ANY -> "A";
                 case ANYCOLOR -> "C";
                 case INVALID -> " ";
                 default -> "_";
