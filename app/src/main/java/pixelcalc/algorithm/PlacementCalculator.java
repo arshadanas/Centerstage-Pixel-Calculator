@@ -510,11 +510,12 @@ public final class PlacementCalculator {
             // if (pixel.color == WHITE) pixel.scoreValue += 11 / 9.0;
 
             for (Pixel mosaicPixel : colorsToGetSPixels) {
-                if (pixel.equals(mosaicPixel))
+                if (pixel.equals(mosaicPixel)
+                        || (backdrop.touching(mosaicPixel, pixel) && pixel.color.matches(ANYCOLOR)))
                     continue;
                 ArrayList<Pixel> mosaicSPixels = getSupportPixels(mosaicPixel);
                 if (pixel.isIn(mosaicSPixels)) {
-                    pixel.scoreValue += mosaicPixel.scoreValue / (double) mosaicSPixels.size();
+                    pixel.scoreValue += mosaicPixel.scoreValue;
                     pixel.mHelper = true;
                 }
             }
